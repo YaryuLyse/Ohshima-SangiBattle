@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Manifest Include="settings.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Game\Common\DeviceResources.cpp">
+      <Filter>Game\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\IdleState.cpp">
+      <Filter>Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\MoveBackwardState.cpp">
+      <Filter>Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\MoveForwardState.cpp">
+      <Filter>Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\MoveLeftState.cpp">
+      <Filter>Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\MoveRightState.cpp">
+      <Filter>Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\AttackState.cpp">
+      <Filter>Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\DeathState.cpp">
+      <Filter>Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\GuardBreakState.cpp">
+      <Filter>Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\GuardState.cpp">
+      <Filter>Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\ResultScene.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\GameScene.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\TitleScene.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\TutorialScene.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="LyseLib\BinaryFile.cpp">
+      <Filter>LyseLib</Filter>
+    </ClCompile>
+    <ClCompile Include="LyseLib\DebugFont.cpp">
+      <Filter>LyseLib</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Character\Character.cpp">
+      <Filter>Game\GameObject\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Character\EnemyController.cpp">
+      <Filter>Game\GameObject\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Character\PlayerController.cpp">
+      <Filter>Game\GameObject\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Character\Shield.cpp">
+      <Filter>Game\GameObject\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Character\Sword.cpp">
+      <Filter>Game\GameObject\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Collider\AttackCollider.cpp">
+      <Filter>Game\GameObject\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Collider\CollisionManager.cpp">
+      <Filter>Game\GameObject\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Collider\GuardBreakCollider.cpp">
+      <Filter>Game\GameObject\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Collider\StageBreakCollision.cpp">
+      <Filter>Game\GameObject\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Collider\StageCollision.cpp">
+      <Filter>Game\GameObject\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Shader\ParticleUtility.cpp">
+      <Filter>Game\GameObject\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Shader\ShaderManager.cpp">
+      <Filter>Game\GameObject\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Shader\ShaderManagerEffect.cpp">
+      <Filter>Game\GameObject\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Shader\ShaderManagerParticle.cpp">
+      <Filter>Game\GameObject\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\UI\ButtonUI.cpp">
+      <Filter>Game\GameObject\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\UI\Gauge.cpp">
+      <Filter>Game\GameObject\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\UI\TutorialUI.cpp">
+      <Filter>Game\GameObject\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Stage\FloorModel.cpp">
+      <Filter>Game\GameObject\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Stage\Skydome.cpp">
+      <Filter>Game\GameObject\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Stage\Stage.cpp">
+      <Filter>Game\GameObject\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Camera\TPSCamera.cpp">
+      <Filter>Game\GameObject\Camera</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Game\Common\DeviceResources.h">
+      <Filter>Game\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Common\StepTimer.h">
+      <Filter>Game\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\GuardState.h">
+      <Filter>Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\IdleState.h">
+      <Filter>Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\MoveBackwardState.h">
+      <Filter>Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\MoveForwardState.h">
+      <Filter>Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\MoveLeftState.h">
+      <Filter>Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\MoveRightState.h">
+      <Filter>Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\StateBase.h">
+      <Filter>Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\StateMachine.h">
+      <Filter>Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\AttackState.h">
+      <Filter>Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\DeathState.h">
+      <Filter>Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\GuardBreakState.h">
+      <Filter>Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\ResultScene.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\GameScene.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\TitleScene.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\TutorialScene.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="LyseLib\BinaryFile.h">
+      <Filter>LyseLib</Filter>
+    </ClInclude>
+    <ClInclude Include="LyseLib\DebugFont.h">
+      <Filter>LyseLib</Filter>
+    </ClInclude>
+    <ClInclude Include="LyseLib\SceneManager.h">
+      <Filter>LyseLib</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Common\UserResources.h" />
+    <ClInclude Include="Game\GameObjects\Character\Character.h">
+      <Filter>Game\GameObject\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Character\Controller.h">
+      <Filter>Game\GameObject\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Character\EnemyController.h">
+      <Filter>Game\GameObject\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Character\PlayerController.h">
+      <Filter>Game\GameObject\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Character\Shield.h">
+      <Filter>Game\GameObject\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Character\Sword.h">
+      <Filter>Game\GameObject\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Collider\AttackCollider.h">
+      <Filter>Game\GameObject\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Collider\CollisionDraw.h">
+      <Filter>Game\GameObject\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Collider\CollisionManager.h">
+      <Filter>Game\GameObject\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Collider\GuardBreakCollider.h">
+      <Filter>Game\GameObject\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Collider\SphereCollider.h">
+      <Filter>Game\GameObject\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Collider\StageBreakCollision.h">
+      <Filter>Game\GameObject\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Collider\StageCollision.h">
+      <Filter>Game\GameObject\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Shader\ParticleUtility.h">
+      <Filter>Game\GameObject\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Shader\ShaderManager.h">
+      <Filter>Game\GameObject\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Shader\ShaderManagerEffect.h">
+      <Filter>Game\GameObject\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Shader\ShaderManagerParticle.h">
+      <Filter>Game\GameObject\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\UI\ButtonUI.h">
+      <Filter>Game\GameObject\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\UI\Gauge.h">
+      <Filter>Game\GameObject\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\UI\TutorialUI.h">
+      <Filter>Game\GameObject\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Stage\FloorModel.h">
+      <Filter>Game\GameObject\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Stage\Skydome.h">
+      <Filter>Game\GameObject\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Stage\Stage.h">
+      <Filter>Game\GameObject\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Camera\TPSCamera.h">
+      <Filter>Game\GameObject\Camera</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Game\Shaders\Effect.hlsli">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="Game\Shaders\Model.hlsli">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="Game\Shaders\Particle.hlsli">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Game">
+      <UniqueIdentifier>{c5444996-b9d1-423d-951a-d86b06a64a39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LyseLib">
+      <UniqueIdentifier>{5b90ff15-4eb3-42e7-a583-2235d9f63a1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Common">
+      <UniqueIdentifier>{edf52e98-c87f-4585-b6c6-8ed09608cb84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameObject">
+      <UniqueIdentifier>{9dab1edf-f942-4c06-94d4-91d59ab01b7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Scene">
+      <UniqueIdentifier>{9a4d0edd-bcdf-4d98-be17-f2dac2f0b45c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\State">
+      <UniqueIdentifier>{5dc47fd3-99ff-42ef-8ed8-446fef94a3ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{c0d964db-8c90-4c43-ad68-9dadb246fdd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{f08c7446-ba6c-4c94-8f89-e770da9f2863}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Shaders">
+      <UniqueIdentifier>{11b7bea1-271e-4db3-b998-71f8684f055a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameObject\UI">
+      <UniqueIdentifier>{67a00075-8fde-408d-a641-d476fea6dc46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameObject\Collider">
+      <UniqueIdentifier>{39b2f3d4-68f6-4673-b6be-02869117b2c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameObject\Character">
+      <UniqueIdentifier>{38bc4a90-9b1d-4208-af23-f1992914735b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameObject\Shader">
+      <UniqueIdentifier>{b5930967-0750-446a-907d-169a3f041ce4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameObject\Stage">
+      <UniqueIdentifier>{51f3fd25-6f46-4eb2-b245-48ea794e868c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameObject\Camera">
+      <UniqueIdentifier>{ab5a7371-51ac-4962-95cc-c94f7a587b39}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Game\Shaders\FieldModelPS.hlsl">
+      <Filter>Resources\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Game\Shaders\FieldModelVS.hlsl">
+      <Filter>Resources\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Game\Shaders\ParticleGS.hlsl">
+      <Filter>Resources\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Game\Shaders\ParticlePS.hlsl">
+      <Filter>Resources\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Game\Shaders\ParticleVS.hlsl">
+      <Filter>Resources\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Game\Shaders\ShieldEffectPS.hlsl">
+      <Filter>Resources\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Game\Shaders\ShieldEffectVS.hlsl">
+      <Filter>Resources\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Game\Shaders\SkydomeModelPS.hlsl">
+      <Filter>Resources\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Game\Shaders\SkydomeModelVS.hlsl">
+      <Filter>Resources\Shaders</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>
