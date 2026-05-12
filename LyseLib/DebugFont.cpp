@@ -1,0 +1,170 @@
+﻿//--------------------------------------------------------------------------------------
+// File: DebugFont.cpp
+//
+// デバッグ用文字フォント描画クラス
+//
+// Date: 2025.2.26
+//--------------------------------------------------------------------------------------
+#include "pch.h"
+#include "DebugFont.h"
+#include "DirectXHelpers.h"
+#include "VertexTypes.h"
+
+
+
+// コンストラクタ
+Lyse::DebugFont::DebugFont(ID3D11Device* device, ID3D11DeviceContext* context, wchar_t const* fileName)
+	: m_fontHeight{}
+{
+	m_spriteBatch = std::make_unique<DirectX::SpriteBatch>(context);
+	m_spriteFont = std::make_unique<DirectX::SpriteFont>(device, fileName);
+
+	// フォントの縦サイズを取得する
+	DirectX::SimpleMath::Vector2 textSize = m_spriteFont->MeasureString("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+	m_fontHeight = textSize.y;
+}
+
+// デストラクタ
+Lyse::DebugFont::~DebugFont()
+{
+	m_spriteFont.reset();
+	m_spriteBatch.reset();
+}
+
+// 描画する文字列を登録する関数
+void Lyse::DebugFont::AddString(const wchar_t * string, DirectX::SimpleMath::Vector2 pos, DirectX::FXMVECTOR color, float scale)
+{
+	String str;
+
+	str.string = std::wstring(string);
+	str.pos = pos;
+	str.color = color;
+	str.scale = scale;
+
+	m_strings.push_back(str);
+}
+
+// 描画関数
+void Lyse::DebugFont::Render(DirectX::CommonStates* states)
+{
+	m_spriteBatch->Begin(DirectX::SpriteSortMode_Deferred, nullptr, nullptr, states->DepthNone(), states->CullCounterClockwise());
+	
+	for (size_t i = 0; i < m_strings.size(); i++)
+	{
+		m_spriteFont->DrawString(
+			m_spriteBatch.get(),
+			m_strings[i].string.c_str(),
+			m_strings[i].pos,
+			m_strings[i].color,
+			0.0f,
+			DirectX::SimpleMath::Vector2(0.0f, 0.0f),
+			m_strings[i].scale);
+	}
+
+	m_spriteBatch->End();
+
+	// 登録されている文字列をクリア
+	m_strings.clear();
+}
+
+// コンストラクタ
+Lyse::DebugFont3D::DebugFont3D(ID3D11Device* device, ID3D11DeviceContext* context, wchar_t const* fileName)
+	: DebugFont(device, context, fileName)
+{	
+	// エフェクトを作成
+	m_effect = std::make_unique<DirectX::BasicEffect>(device);
+	m_effect->SetTextureEnabled(true);
+	m_effect->SetVertexColorEnabled(true);
+	m_effect->SetLightingEnabled(false);
+
+	// 入力レイアウトを作成
+	DX::ThrowIfFailed(
+		CreateInputLayoutFromEffect(
+			device,
+			m_effect.get(),
+			DirectX::VertexPositionColorTexture::InputElements,
+			DirectX::VertexPositionColorTexture::InputElementCount,
+			m_inputLayout.ReleaseAndGetAddressOf())
+	);
+}
+
+// デストラクタ
+Lyse::DebugFont3D::~DebugFont3D()
+{
+	m_inputLayout.Reset();
+	m_effect.reset();
+}
+
+// 描画する文字列を登録する関数（3D版）
+void Lyse::DebugFont3D::AddString(
+	const wchar_t* string,
+	DirectX::SimpleMath::Vector3 pos,
+	DirectX::FXMVECTOR color,
+	float scale)
+{
+	String str;
+
+	str.string = std::wstring(string);
+	str.pos = pos;
+	str.color = color;
+	// 文字の高さが3D空間内で１になるよう調整している（余白があるのできっちりではない）
+	str.scale = scale / m_fontHeight;
+
+	m_strings.push_back(str);
+}
+
+// 描画関数（3D版）
+void Lyse::DebugFont3D::Render(
+	ID3D11DeviceContext* context,
+	DirectX::CommonStates* states,
+	const DirectX::SimpleMath::Matrix& view,
+	const DirectX::SimpleMath::Matrix& proj)
+{
+	// スクリーン座標はY軸が＋－逆なので
+	DirectX::SimpleMath::Matrix invertY = DirectX::SimpleMath::Matrix::CreateScale(1.0f, -1.0f, 1.0f);
+
+	// ビュー行列の回転を打ち消す行列を作成する
+	DirectX::SimpleMath::Matrix invView = view.Invert();
+	invView._41 = 0.0f;
+	invView._42 = 0.0f;
+	invView._43 = 0.0f;
+
+	// エフェクトにビュー行列と射影行列を設定する
+	m_effect->SetView(view);
+	m_effect->SetProjection(proj);
+
+	for (size_t i = 0; i < m_strings.size(); i++)
+	{
+		m_spriteBatch->Begin(DirectX::SpriteSortMode_Deferred, nullptr, nullptr, states->DepthNone(), states->CullCounterClockwise(), [=]
+			{
+				// ワールド行列作成
+				DirectX::SimpleMath::Matrix world = invertY * invView * DirectX::SimpleMath::Matrix::CreateTranslation(m_strings[i].pos);
+				// エフェクトを適応する
+				m_effect->SetWorld(world);
+				m_effect->Apply(context);
+				// 入力レイアウトを設定する
+				context->IASetInputLayout(m_inputLayout.Get());
+			}
+		);
+
+		// 1. MeasureString の結果を Vector2 として受け取る
+		DirectX::SimpleMath::Vector2 textSize = m_spriteFont->MeasureString(m_strings[i].string.c_str());
+
+		// 2. その後に半分にする（これで中心が出る）
+		DirectX::SimpleMath::Vector2 textOrigin = textSize * 0.5f;
+
+		m_spriteFont->DrawString(
+			m_spriteBatch.get(),
+			m_strings[i].string.c_str(),
+			DirectX::SimpleMath::Vector2::Zero,
+			m_strings[i].color,
+			0.0f,
+			textOrigin,
+			m_strings[i].scale);
+
+		m_spriteBatch->End();
+	}
+
+	// 登録されている文字列をクリア
+	m_strings.clear();
+}
